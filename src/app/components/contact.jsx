@@ -41,6 +41,32 @@ export default function ContactForm() {
   const sendEmail = async (e) => {
     e.preventDefault();
 
+    // Browser Validation
+    if (!formRef.current.checkValidity()) {
+      formRef.current.reportValidity();
+      return;
+    }
+
+    // Validate Services
+    const selectedServices = formRef.current.querySelectorAll(
+      'input[name="services"]:checked'
+    );
+
+    if (selectedServices.length === 0) {
+      toast.error("Please select at least one service.");
+      return;
+    }
+
+    // Validate Goals
+    const selectedGoals = formRef.current.querySelectorAll(
+      'input[name="goals"]:checked'
+    );
+
+    if (selectedGoals.length === 0) {
+      toast.error("Please select at least one project goal.");
+      return;
+    }
+
     setLoading(true);
 
     const toastId = toast.loading(
@@ -86,6 +112,7 @@ export default function ContactForm() {
       id="contact-form"
       className="relative py-24 bg-black text-white overflow-hidden"
     >
+
       {/* Background Glow */}
       <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-cyan-500/10 blur-3xl" />
       <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-blue-500/10 blur-3xl" />
@@ -117,6 +144,7 @@ export default function ContactForm() {
         <form
           ref={formRef}
           onSubmit={sendEmail}
+          noValidate
           className="rounded-[35px] border border-white/10 bg-white/[0.04] p-6 sm:p-8 md:p-10 backdrop-blur-sm"
         >
 
@@ -129,6 +157,8 @@ export default function ContactForm() {
               name="full_name"
               placeholder="Enter your full name"
               required
+              minLength={3}
+              maxLength={50}
             />
 
             <Input
@@ -136,20 +166,25 @@ export default function ContactForm() {
               type="text"
               name="business_name"
               placeholder="Your business/company name"
+              minLength={2}
+              maxLength={50}
             />
 
             <Input
               label="Phone Number"
               type="tel"
               name="phone"
-              placeholder="+91 XXXXX XXXXX"
+              placeholder="9876543210"
+              required
+              pattern="[0-9]{10}"
             />
 
             <Input
               label="WhatsApp Number"
               type="tel"
               name="whatsapp"
-              placeholder="+91 XXXXX XXXXX"
+              placeholder="9876543210"
+              pattern="[0-9]{10}"
             />
 
             <Input
@@ -165,6 +200,8 @@ export default function ContactForm() {
               type="text"
               name="location"
               placeholder="Your city or location"
+              required
+              minLength={2}
             />
 
           </div>
@@ -193,6 +230,7 @@ export default function ContactForm() {
             <input
               type="text"
               name="budget"
+              required
               placeholder="Example: ₹10,000 - ₹50,000"
               className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 outline-none focus:border-cyan-400/40 placeholder:text-white/30"
             />
@@ -218,6 +256,7 @@ export default function ContactForm() {
                     type="radio"
                     name="timeline"
                     value={time}
+                    required
                     className="accent-cyan-400 w-5 h-5"
                   />
 
@@ -248,6 +287,8 @@ export default function ContactForm() {
             <textarea
               rows={6}
               name="message"
+              required
+              minLength={20}
               placeholder="Describe your project, business goals, required features..."
               className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 outline-none focus:border-cyan-400/40 placeholder:text-white/30 resize-none"
             />
@@ -322,6 +363,9 @@ function Input({
   name,
   placeholder,
   required = false,
+  pattern,
+  minLength,
+  maxLength,
 }) {
   return (
     <div>
@@ -335,6 +379,9 @@ function Input({
         name={name}
         required={required}
         placeholder={placeholder}
+        pattern={pattern}
+        minLength={minLength}
+        maxLength={maxLength}
         className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 outline-none focus:border-cyan-400/40 placeholder:text-white/30"
       />
 
