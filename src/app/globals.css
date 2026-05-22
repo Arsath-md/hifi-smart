@@ -18,3 +18,28 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.Toastify__toast-container {
+  width: fit-content !important;
+  max-width: 90vw !important;
+}
+
+.Toastify__toast {
+  min-height: auto !important;
+  padding: 14px 16px !important;
+  border-radius: 18px !important;
+  font-size: 14px !important;
+}
+
+@media (max-width: 640px) {
+  .Toastify__toast-container {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: 20px !important;
+  }
+
+  .Toastify__toast {
+    width: 90vw !important;
+    margin: 0 auto !important;
+    font-size: 13px !important;
+  }
+}
