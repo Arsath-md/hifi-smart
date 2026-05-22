@@ -1,20 +1,7 @@
+import Link from "next/link";
+
 const plans = [
-  {
-    name: "Basic Plan",
-    price: "₹999",
-    duration: "/month",
-    description:
-      "Perfect for small businesses that need regular website maintenance and support.",
-    highlight: false,
-    features: [
-      "Small Website Updates",
-      "Uptime Monitoring",
-      "Website Backup",
-      "Bug Fixes",
-      "WhatsApp Support",
-      "Basic Security Checks",
-    ],
-  },
+  
   {
     name: "Standard Plan",
     price: "₹4999",
@@ -32,24 +19,7 @@ const plans = [
       "Performance Monitoring",
     ],
   },
-  {
-    name: "Premium Plan",
-    price: "₹10K+",
-    duration: "/month",
-    description:
-      "Complete growth solution for businesses that want aggressive scaling and marketing.",
-    highlight: false,
-    features: [
-      "Advanced SEO",
-      "Marketing Management",
-      "Landing Page Creation",
-      "Ad Campaign Management",
-      "Priority Support",
-      "Monthly Strategy Calls",
-      "Conversion Optimization",
-      "Growth Consulting",
-    ],
-  },
+  
 ];
 
 export default function Subscription() {
@@ -88,7 +58,7 @@ export default function Subscription() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="flex lg:grid lg:grid-cols-3 gap-6 overflow-x-auto lg:overflow-visible pb-4 snap-x snap-mandatory scrollbar-hide">
+        <div className="flex lg:grid lg:grid-cols-3 gap-6 overflow-x-auto lg:overflow-visible pb-4  scrollbar-hide flex justify-center items-center">
           {plans.map((plan) => (
             <div
               key={plan.name}
@@ -145,6 +115,7 @@ export default function Subscription() {
               </div>
 
               {/* CTA */}
+              <Link href={"/contact"}>
               <button
                 className={`w-full py-4 rounded-2xl font-bold transition duration-300 text-sm sm:text-base ${
                   plan.highlight
@@ -153,7 +124,7 @@ export default function Subscription() {
                 }`}
               >
                 Get Started
-              </button>
+              </button></Link>
 
               {/* Glow Effect */}
               <div

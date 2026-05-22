@@ -1,10 +1,48 @@
-import Portfolio from "./portfolio/page";
-import Process from "./process/page";
-import Service from "./service/page";
-import CTA from "./CTA/page";
-import Footer from "./footer/page";
-import Subscription from "./subcription/page";
+import dynamic from "next/dynamic";
+import FAQSection from "./FAQ/page";
+import Link from "next/link";
 
+const Portfolio = dynamic(
+  () => import("./portfolio/page"),
+  {
+    loading: () => <p>Loading...</p>,
+  }
+);
+
+const Process = dynamic(
+  () => import("./process/page"),
+  {
+    loading: () => <p>Loading...</p>,
+  }
+);
+
+const Service = dynamic(
+  () => import("./service/page"),
+  {
+    loading: () => <p>Loading...</p>,
+  }
+);
+
+const CTA = dynamic(
+  () => import("./CTA/page"),
+  {
+    loading: () => <p>Loading...</p>,
+  }
+);
+
+const Footer = dynamic(
+  () => import("./footer/page"),
+  {
+    loading: () => <p>Loading...</p>,
+  }
+);
+
+const Subscription = dynamic(
+  () => import("./subcription/page"),
+  {
+    loading: () => <p>Loading....</p>,
+  }
+);
 export default function Home() {
   return (
     <>
@@ -50,14 +88,14 @@ export default function Home() {
 
               {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mt-10 justify-center lg:justify-start">
-                
-                <button className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-cyan-400 text-black font-bold hover:scale-105 transition duration-300 shadow-lg shadow-cyan-500/30">
+                <Link href={"/contact"}>
+                <button className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-cyan-400 text-black font-bold hover:scale-105 transition duration-300 shadow-lg shadow-cyan-500/30" >
                   Start Your Project
-                </button>
-
+                </button></Link>
+                <Link href={"/subcription"}>
                 <button className="w-full sm:w-auto px-8 py-4 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 transition duration-300">
-                  View Portfolio
-                </button>
+                  View Plans
+                </button></Link>
               </div>
 
               {/* Stats */}
@@ -171,6 +209,7 @@ export default function Home() {
       <Process />
       <Subscription/>
       <Portfolio />
+      <FAQSection/>
       <CTA />
       <Footer />
     </>

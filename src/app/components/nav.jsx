@@ -1,110 +1,201 @@
-import Link from "next/link"
+"use client";
 
-export default function Nav(){
-    return(<>
-<header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-xl">
-  <nav
-    className="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between"
-    aria-label="Main Navigation"
-  >
-    {/* Logo */}
-    <a
-      href="/"
-      className="flex items-center gap-3"
-      aria-label="HIFI SMART Home"
-    >
-      <div className="w-11 h-11 rounded-2xl bg-cyan-400/20 border border-cyan-400/30 flex items-center justify-center">
-        <span className="text-cyan-300 font-black text-xl">H</span>
-      </div>
+import Link from "next/link";
+import { useState } from "react";
 
-      <div>
-        <h1 className="text-lg font-black tracking-wide text-white">
-          HIFI SMART
-        </h1>
+export default function Nav() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [serviceOpen, setServiceOpen] = useState(false);
 
-        <p className="text-xs text-white/50">
-          Web & Mobile App Agency
-        </p>
-      </div>
-    </a>
+  return (
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-xl">
+      <nav className="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
 
-    {/* Navigation Links */}
-    <ul className="hidden lg:flex items-center gap-10 text-sm font-medium">
-      <li>
-        <a
-          href="/"
-          className="text-white/70 hover:text-cyan-300 transition"
-        >
-          Home
-        </a>
-      </li>
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
+          <div className="w-11 h-11 rounded-2xl bg-cyan-400/20 border border-cyan-400/30 flex items-center justify-center">
+            <span className="text-cyan-300 font-black text-xl">H</span>
+          </div>
 
-      <li>
-        <a
-          href="/about"
-          className="text-white/70 hover:text-cyan-300 transition"
-        >
-          About
-        </a>
-      </li>
+          <div>
+            <h1 className="text-lg font-black tracking-wide text-white">
+              HIFI SMART
+            </h1>
 
-      <li>
-        <a
-          href="/services"
-          className="text-white/70 hover:text-cyan-300 transition"
-        >
-          Services
-        </a>
-      </li>
+            <p className="text-xs text-white/50">
+              Web & Mobile App Agency
+            </p>
+          </div>
+        </Link>
 
-      <li>
-        <a
-          href="/projects"
-          className="text-white/70 hover:text-cyan-300 transition"
-        >
-          Projects
-        </a>
-      </li>
+        {/* Desktop Menu */}
+        <ul className="hidden lg:flex items-center gap-10 text-sm font-medium">
 
-      <li>
-        <a
-          href="/blog"
-          className="text-white/70 hover:text-cyan-300 transition"
-        >
-          Blog
-        </a>
-      </li>
+          <li>
+            <Link
+              href="/"
+              className="text-white/70 hover:text-cyan-300 transition"
+            >
+              Home
+            </Link>
+          </li>
 
-      <li>
-        <a
-          href="/contact"
-          className="text-white/70 hover:text-cyan-300 transition"
-        >
-          Contact
-        </a>
-      </li>
-    </ul>
+          <li>
+            <Link
+              href="/process"
+              className="text-white/70 hover:text-cyan-300 transition"
+            >
+              About
+            </Link>
+          </li>
 
-    {/* CTA Button */}
-    <div className="flex items-center gap-4">
-      <a
-        href="/contact"
-        className="hidden md:flex px-6 py-3 rounded-2xl bg-cyan-400 text-black font-bold hover:scale-105 transition duration-300"
-      >
-        Start Project
-      </a>
+          {/* Desktop Services Dropdown */}
+          <li className="relative group">
+            <button className="flex items-center gap-2 text-white/70 hover:text-cyan-300 transition">
+              Services
+              <span className="text-xs">▼</span>
+            </button>
 
-      {/* Mobile Menu Button */}
-      <button
-        className="lg:hidden flex flex-col gap-1"
-        aria-label="Open Menu"
-      >
-        <span className="w-6 h-0.5 bg-white"></span>
-        <span className="w-6 h-0.5 bg-white"></span>
-        <span className="w-6 h-0.5 bg-white"></span>
-      </button>
-    </div>
-  </nav>
-</header>
+            <div className="absolute text-white top-full left-0 pt-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <div className="w-72 rounded-3xl border border-white/10 bg-black/95 backdrop-blur-2xl p-4">
 
-</>)}
+                <Link
+                  href="/services/web-development"
+                  className="block p-4 rounded-2xl hover:bg-white/5"
+                >
+                  Web Development
+                </Link>
+
+                <Link
+                  href="/services/app-development"
+                  className="block p-4 rounded-2xl hover:bg-white/5"
+                >
+                  App Development
+                </Link>
+
+                <Link
+                  href="/services/digital-marketing"
+                  className="block p-4 rounded-2xl hover:bg-white/5"
+                >
+                  Digital Marketing
+                </Link>
+
+                <Link
+                  href="/services/ai-automation"
+                  className="block p-4 rounded-2xl hover:bg-white/5"
+                >
+                  AI Automation
+                </Link>
+
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <Link
+              href="/portfolio"
+              className="text-white/70 hover:text-cyan-300 transition"
+            >
+              Projects
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              href="/subcription"
+              className="text-white/70 hover:text-cyan-300 transition"
+            >
+              Plans
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              href="/contact"
+              className="text-white/70 hover:text-cyan-300 transition"
+            >
+              Contact
+            </Link>
+          </li>
+
+        </ul>
+
+        {/* Right Side */}
+        <div className="flex items-center gap-4">
+
+          <Link
+            href="/contact"
+            className="hidden md:flex px-6 py-3 rounded-2xl bg-cyan-400 text-black font-bold hover:scale-105 transition"
+          >
+            Start Project
+          </Link>
+
+          {/* Mobile Button */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden flex flex-col gap-1"
+            aria-label="Open Menu"
+          >
+            <span className="w-6 h-0.5 bg-white"></span>
+            <span className="w-6 h-0.5 bg-white"></span>
+            <span className="w-6 h-0.5 bg-white"></span>
+          </button>
+
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="lg:hidden border-t border-white/10 bg-black px-5 py-6">
+
+          <div className="flex flex-col gap-5 text-white/70">
+
+            <Link href="/">Home</Link>
+
+            <Link href="/process">About</Link>
+
+            {/* Mobile Services */}
+            <div>
+              <button
+                onClick={() => setServiceOpen(!serviceOpen)}
+                className="flex items-center justify-between w-full"
+              >
+                Services
+                <span>{serviceOpen ? "-" : "+"}</span>
+              </button>
+
+              {serviceOpen && (
+                <div className="mt-4 ml-4 flex flex-col gap-4 text-sm text-white/50">
+
+                  <Link href="/services/web-development">
+                    Web Development
+                  </Link>
+
+                  <Link href="/services/app-development">
+                    App Development
+                  </Link>
+
+                  <Link href="/services/digital-marketing">
+                    Digital Marketing
+                  </Link>
+
+                  <Link href="/services/ai-automation">
+                    AI Automation
+                  </Link>
+
+                </div>
+              )}
+            </div>
+
+            <Link href="/projects">Projects</Link>
+
+            <Link href="/subcription">plans</Link>
+
+            <Link href="/contact">Contact</Link>
+
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
