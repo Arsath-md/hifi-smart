@@ -103,7 +103,7 @@ export default function Home() {
                 
                 <div>
                   <h2 className="text-2xl sm:text-3xl font-black text-cyan-300">
-                    25+
+                    2+
                   </h2>
 
                   <p className="text-gray-400 text-xs sm:text-sm mt-2">
@@ -113,7 +113,7 @@ export default function Home() {
 
                 <div>
                   <h2 className="text-2xl sm:text-3xl font-black text-cyan-300">
-                    10+
+                    2+
                   </h2>
 
                   <p className="text-gray-400 text-xs sm:text-sm mt-2">
@@ -123,7 +123,7 @@ export default function Home() {
 
                 <div>
                   <h2 className="text-2xl sm:text-3xl font-black text-cyan-300">
-                    99%
+                    90%
                   </h2>
 
                   <p className="text-gray-400 text-xs sm:text-sm mt-2">

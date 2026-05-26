@@ -2,9 +2,14 @@
 
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import Link from "next/link";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+/* =========================
+   DATA
+========================= */
 
 const services = [
   "Website Development",
@@ -33,6 +38,14 @@ const timelineOptions = [
   "Flexible",
 ];
 
+const plans = [
+  "Standard Plan",
+];
+
+/* =========================
+   MAIN COMPONENT
+========================= */
+
 export default function ContactForm() {
   const formRef = useRef(null);
 
@@ -41,13 +54,13 @@ export default function ContactForm() {
   const sendEmail = async (e) => {
     e.preventDefault();
 
-    // Browser Validation
+    /* Browser Validation */
     if (!formRef.current.checkValidity()) {
       formRef.current.reportValidity();
       return;
     }
 
-    // Validate Services
+    /* Validate Services */
     const selectedServices = formRef.current.querySelectorAll(
       'input[name="services"]:checked'
     );
@@ -57,13 +70,23 @@ export default function ContactForm() {
       return;
     }
 
-    // Validate Goals
+    /* Validate Goals */
     const selectedGoals = formRef.current.querySelectorAll(
       'input[name="goals"]:checked'
     );
 
     if (selectedGoals.length === 0) {
       toast.error("Please select at least one project goal.");
+      return;
+    }
+
+    /* Validate Plan */
+    const selectedPlan = formRef.current.querySelector(
+      'input[name="plans"]:checked'
+    );
+
+    if (!selectedPlan) {
+      toast.error("Please choose a plan.");
       return;
     }
 
@@ -112,9 +135,9 @@ export default function ContactForm() {
       id="contact-form"
       className="relative py-24 bg-black text-white overflow-hidden"
     >
-
       {/* Background Glow */}
       <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-cyan-500/10 blur-3xl" />
+
       <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-blue-500/10 blur-3xl" />
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
@@ -135,7 +158,6 @@ export default function ContactForm() {
 
           <p className="text-white/60 text-base sm:text-lg leading-relaxed">
             Tell us about your business and project requirements.
-            We’ll contact you with the best solution for your goals.
           </p>
 
         </div>
@@ -157,8 +179,6 @@ export default function ContactForm() {
               name="full_name"
               placeholder="Enter your full name"
               required
-              minLength={3}
-              maxLength={50}
             />
 
             <Input
@@ -166,8 +186,6 @@ export default function ContactForm() {
               type="text"
               name="business_name"
               placeholder="Your business/company name"
-              minLength={2}
-              maxLength={50}
             />
 
             <Input
@@ -177,7 +195,6 @@ export default function ContactForm() {
               placeholder="9876543210"
               required
               pattern="[0-9]{10}"
-
             />
 
             <Input
@@ -185,8 +202,8 @@ export default function ContactForm() {
               type="tel"
               name="whatsapp"
               placeholder="9876543210"
-              pattern="[0-9]{10}"
               required
+              pattern="[0-9]{10}"
             />
 
             <Input
@@ -203,7 +220,6 @@ export default function ContactForm() {
               name="location"
               placeholder="Your city or location"
               required
-              minLength={2}
             />
 
           </div>
@@ -240,42 +256,38 @@ export default function ContactForm() {
           </div>
 
           {/* TIMELINE */}
+          <RadioSection
+            title="When Do You Want This Completed?"
+            items={timelineOptions}
+            name="timeline"
+          />
+
+          {/* DATE */}
           <div className="mb-10">
-
-            <h3 className="text-2xl font-bold mb-6">
-              When Do You Want This Completed?
-            </h3>
-
-            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-
-              {timelineOptions.map((time) => (
-                <label
-                  key={time}
-                  className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 cursor-pointer hover:border-cyan-400/30 transition"
-                >
-
-                  <input
-                    type="radio"
-                    name="timeline"
-                    value={time}
-                    required
-                    className="accent-cyan-400 w-5 h-5"
-                  />
-
-                  <span className="text-white/80 text-sm">
-                    {time}
-                  </span>
-
-                </label>
-              ))}
-
-            </div>
 
             <input
               type="date"
               name="completion_date"
               className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 outline-none focus:border-cyan-400/40 text-white"
             />
+
+          </div>
+
+          {/* PLANS */}
+          <div className="mb-10">
+
+            <RadioSection
+              title="Choose Your Plan"
+              items={plans}
+              name="plans"
+            />
+
+            <Link
+              href="/subscription"
+              className="font-bold text-yellow-500 hover:text-yellow-400 transition"
+            >
+              📌 View Our Plans
+            </Link>
 
           </div>
 
@@ -291,7 +303,7 @@ export default function ContactForm() {
               name="message"
               required
               minLength={20}
-              placeholder="Describe your project, business goals, required features..."
+              placeholder="Describe your project..."
               className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 outline-none focus:border-cyan-400/40 placeholder:text-white/30 resize-none"
             />
 
@@ -311,9 +323,7 @@ export default function ContactForm() {
               />
 
               <span className="text-white/60 text-sm leading-relaxed">
-                I agree to be contacted regarding this inquiry and
-                understand that my information will be used only for
-                communication related to this project.
+                I agree to be contacted regarding this inquiry.
               </span>
 
             </label>
@@ -324,7 +334,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-5 rounded-2xl bg-cyan-400 text-black font-black text-lg hover:scale-[1.01] transition duration-300 shadow-lg shadow-cyan-500/20 disabled:opacity-50"
+            className="w-full py-5 rounded-2xl bg-cyan-400 text-black font-black text-lg hover:scale-[1.01] transition duration-300 disabled:opacity-50"
           >
             {loading ? "Submitting..." : "Submit Inquiry"}
           </button>
@@ -334,31 +344,16 @@ export default function ContactForm() {
       </div>
 
       {/* TOAST */}
-      <ToastContainer
-        position="bottom-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        pauseOnHover
-        draggable
-        theme="dark"
-        toastStyle={{
-          background: "#0f172a",
-          color: "#fff",
-          border: "1px solid rgba(255,255,255,0.1)",
-          borderRadius: "18px",
-          fontSize: "14px",
-          width: "min(90vw, 420px)",
-          padding: "14px 16px",
-        }}
-      />
+      <ToastContainer theme="dark" />
 
     </section>
   );
 }
 
-/* INPUT COMPONENT */
+/* =========================
+   INPUT COMPONENT
+========================= */
+
 function Input({
   label,
   type,
@@ -366,8 +361,6 @@ function Input({
   placeholder,
   required = false,
   pattern,
-  minLength,
-  maxLength,
 }) {
   return (
     <div>
@@ -382,8 +375,6 @@ function Input({
         required={required}
         placeholder={placeholder}
         pattern={pattern}
-        minLength={minLength}
-        maxLength={maxLength}
         className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 outline-none focus:border-cyan-400/40 placeholder:text-white/30"
       />
 
@@ -391,7 +382,10 @@ function Input({
   );
 }
 
-/* CHECKBOX COMPONENT */
+/* =========================
+   CHECKBOX SECTION
+========================= */
+
 function CheckboxSection({ title, items, name }) {
   return (
     <div className="mb-10">
@@ -412,6 +406,47 @@ function CheckboxSection({ title, items, name }) {
               type="checkbox"
               name={name}
               value={item}
+              className="accent-cyan-400 w-5 h-5"
+            />
+
+            <span className="text-white/80 text-sm">
+              {item}
+            </span>
+
+          </label>
+        ))}
+
+      </div>
+
+    </div>
+  );
+}
+
+/* =========================
+   RADIO SECTION
+========================= */
+
+function RadioSection({ title, items, name }) {
+  return (
+    <div className="mb-10">
+
+      <h3 className="text-2xl font-bold mb-6">
+        {title}
+      </h3>
+
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+        {items.map((item) => (
+          <label
+            key={item}
+            className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 cursor-pointer hover:border-cyan-400/30 transition"
+          >
+
+            <input
+              type="radio"
+              name={name}
+              value={item}
+              required
               className="accent-cyan-400 w-5 h-5"
             />
 

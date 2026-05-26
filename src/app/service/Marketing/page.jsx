@@ -15,6 +15,7 @@ export default function Page(){
     "Lead Generation Campaigns",
     "Landing Page Optimization",
     "Basic Content & Creative Strategy",
+    "Post and Thumnail creation"
   ],
 
   technologies: [
@@ -23,9 +24,9 @@ export default function Page(){
     "Google Analytics",
     "Google Search Console",
     "Canva",
-    "WordPress",
     "Mailchimp",
     "HubSpot",
+    "Appolo.io"
   ],
 
   process: [
@@ -57,7 +58,7 @@ export default function Page(){
     },
   ],
 
-  pricing: "Starting from ₹10,000",
+  pricing: "Starting from ₹1,500",
 };
 
     return(

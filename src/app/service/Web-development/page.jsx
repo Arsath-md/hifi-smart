@@ -21,7 +21,12 @@ export default function Page(){
     "Node.js",
     "MongoDB",
     "Firebase",
-    "AWS",
+    "Vercel",
+    "Render",
+    "HTML, CSS and JS ",
+    "Figma",
+    "Google stitch",
+    "Vibe coding with claude , chatgpt"
   ],
 
   process: [
@@ -53,7 +58,7 @@ export default function Page(){
     },
   ],
 
-  pricing: "Starting from ₹25,000",
+  pricing: "Starting from ₹4,000",
 };
 
     return(

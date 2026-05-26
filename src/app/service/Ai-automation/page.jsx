@@ -14,18 +14,17 @@ const service = {
     "AI Content Generation Tools",
     "CRM & Lead Automation",
     "Dashboard & Reporting Systems",
-    "Custom Business Automation Solutions",
   ],
 
   technologies: [
-    "OpenAI API",
+    "Gemini flash API",
     "Node.js",
     "Python",
-    "LangChain",
     "Firebase",
     "MongoDB",
     "Zapier",
     "Make.com",
+    "n8n"
   ],
 
   process: [
@@ -57,7 +56,7 @@ const service = {
     },
   ],
 
-  pricing: "Starting from ₹20,000",
+  pricing: "Starting from ₹2,500",
 };
 
     return(

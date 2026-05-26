@@ -10,8 +10,6 @@ export default function Page(){
     "Android App Development",
     "iOS App Development",
     "Cross-Platform Applications",
-    "Business & Startup Apps",
-    "E-commerce Mobile Apps",
     "Booking & Service Apps",
     "App UI/UX Design",
     "App Maintenance & Updates",
@@ -26,6 +24,9 @@ export default function Page(){
     "Redux",
     "REST APIs",
     "Google Maps API",
+     "Figma",
+    "Google stitch",
+    "Vibe coding with claude , chatgpt"
   ],
 
   process: [
@@ -57,7 +58,7 @@ export default function Page(){
     },
   ],
 
-  pricing: "Starting from ₹35,000",
+  pricing: "Starting from ₹3,000",
 };
 
     return(
