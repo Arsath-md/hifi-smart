@@ -5,27 +5,26 @@ const projects = [
     title: "HIFI Smart Agency",
     category: "Web Development",
     description:
-      "Modern startup agency website with premium UI, SEO optimization, and responsive design with high performence.",
+      "Modern startup agency website with premium UI, SEO optimization, and responsive design with high performance.",
     icon: "🚀",
-    link:"https://hifi-smart.vercel.app/"
+    link: "https://hifi-smart.vercel.app/",
   },
   {
-    title: "Blog website",
+    title: "Blog Website",
     category: "Web App",
     description:
       "High-performance online creating and uploading platform with secure admin dashboard.",
     icon: "📝",
-    link:"https://github.com/Arsath-md/my-blog"
+    link: "https://github.com/Arsath-md/my-blog",
   },
   {
     title: "Homecare Website",
-    category: "Webite",
+    category: "Website",
     description:
-      "High-performance and mordern application for the Home care nursing company called velan homecare",
+      "Modern application for the home care nursing company called Velan Homecare.",
     icon: "⚕️",
-    link:"https://homecare-alpha.vercel.app/"
-
-  }
+    link: "https://homecare-alpha.vercel.app/",
+  },
 ];
 
 export default function Portfolio() {
@@ -36,6 +35,7 @@ export default function Portfolio() {
     >
       {/* Background Glow */}
       <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-cyan-500/10 blur-[140px]" />
+
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/10 blur-[140px]" />
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -58,23 +58,23 @@ export default function Portfolio() {
           </p>
         </div>
 
-        {/* Portfolio Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        {/* Portfolio Cards */}
+        <div className="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4 lg:grid lg:grid-cols-3 lg:overflow-visible">
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="group relative overflow-hidden rounded-[35px] border border-white/10 bg-white/[0.04] backdrop-blur-xl hover:border-cyan-400/30 transition duration-500"
+              className="group relative min-w-[320px] md:min-w-[380px] lg:min-w-0 overflow-hidden rounded-[35px] border border-white/10 bg-white/[0.04] backdrop-blur-xl hover:border-cyan-400/30 transition duration-500 snap-start"
             >
               {/* Image Area */}
-              <div className="relative h-80 overflow-hidden">
+              <div className="relative h-64 md:h-80 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-transparent to-blue-500/20" />
 
-                <div className="absolute inset-0 flex items-center justify-center text-8xl group-hover:scale-110 transition duration-700">
+                <div className="absolute inset-0 flex items-center justify-center text-7xl md:text-8xl group-hover:scale-110 transition duration-700">
                   {project.icon}
                 </div>
 
                 {/* Number */}
-                <div className="absolute top-6 right-6 text-6xl font-black text-white/10">
+                <div className="absolute top-6 right-6 text-5xl md:text-6xl font-black text-white/10">
                   0{index + 1}
                 </div>
 
@@ -94,7 +94,7 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                <h3 className="text-3xl font-black mb-4 group-hover:text-cyan-300 transition">
+                <h3 className="text-2xl md:text-3xl font-black mb-4 group-hover:text-cyan-300 transition">
                   {project.title}
                 </h3>
 
@@ -104,13 +104,17 @@ export default function Portfolio() {
 
                 {/* Footer */}
                 <div className="flex items-center justify-between pt-6 border-t border-white/10">
-                <Link href={project.link}>
-                  <button className="flex items-center gap-2 text-white/70 group-hover:text-cyan-300 transition-all">
+                  <Link
+                    href={project.link}
+                    target="_blank"
+                    className="flex items-center gap-2 text-white/70 group-hover:text-cyan-300 transition-all"
+                  >
                     View Project
+
                     <span className="group-hover:translate-x-1 transition">
                       →
                     </span>
-                  </button></Link>
+                  </Link>
 
                   <span className="text-white/20 text-sm">
                     Premium Project
