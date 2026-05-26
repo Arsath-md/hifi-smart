@@ -60,28 +60,28 @@ export default function Nav() {
               <div className="w-72 rounded-3xl border border-white/10 bg-black/95 backdrop-blur-2xl p-4">
 
                 <Link
-                  href="/services/web-development"
+                  href="/service/Web-development"
                   className="block p-4 rounded-2xl hover:bg-white/5"
                 >
-                  Web Development
+                  <button>web development</button>
                 </Link>
 
                 <Link
-                  href="/services/app-development"
+                  href="/service/App-development"
                   className="block p-4 rounded-2xl hover:bg-white/5"
                 >
                   App Development
                 </Link>
 
                 <Link
-                  href="/services/digital-marketing"
+                  href="/service/Marketing"
                   className="block p-4 rounded-2xl hover:bg-white/5"
                 >
                   Digital Marketing
                 </Link>
 
                 <Link
-                  href="/services/ai-automation"
+                  href="/service/Ai-automation"
                   className="block p-4 rounded-2xl hover:bg-white/5"
                 >
                   AI Automation

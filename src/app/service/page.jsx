@@ -1,27 +1,36 @@
+import Link from "next/link";
+
 const services = [
   {
     title: "Web Application Development",
     description:
       "Modern, scalable web applications built for startups, local businesses, and fast-growing brands.",
     icon: "🌐",
+    routes:"Web-development"
   },
   {
     title: "Mobile App Development",
     description:
       "Premium Android & iOS applications with smooth performance and modern user experience.",
     icon: "📱",
+    routes:"App-development"
+
   },
   {
     title: "AI Automation",
     description:
       "AI-powered chatbots, workflow automation, smart dashboards, and business process systems.",
     icon: "🤖",
+    routes:"Ai-automation"
+
   },
   {
     title: "Digital Marketing",
     description:
       "SEO, branding, social media growth, performance marketing, and lead generation strategies.",
     icon: "📈",
+    routes:"Marketing"
+
   },
 ];
 
@@ -84,10 +93,11 @@ export default function Service() {
                 </p>
 
                 {/* Button */}
+                <Link href={`/service/${service.routes}`}>
                 <button className="flex items-center gap-2 text-cyan-300 font-medium group-hover:gap-4 transition-all">
                   Learn More
                   <span>→</span>
-                </button>
+                </button></Link>
 
                 {/* Hover Glow */}
                 <div className="absolute inset-0 rounded-[32px] opacity-0 group-hover:opacity-100 transition duration-500 bg-cyan-400/5 pointer-events-none" />

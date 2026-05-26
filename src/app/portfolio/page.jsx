@@ -1,18 +1,31 @@
+import Link from "next/link";
+
 const projects = [
   {
     title: "HIFI Smart Agency",
     category: "Web Development",
     description:
-      "Modern startup agency website with premium UI, SEO optimization, and responsive design.",
+      "Modern startup agency website with premium UI, SEO optimization, and responsive design with high performence.",
     icon: "🚀",
+    link:"https://hifi-smart.vercel.app/"
   },
   {
-    title: "E-Commerce Platform",
-    category: "Mobile & Web App",
+    title: "Blog website",
+    category: "Web App",
     description:
-      "High-performance online shopping platform with secure payments and admin dashboard.",
-    icon: "🛒",
+      "High-performance online creating and uploading platform with secure admin dashboard.",
+    icon: "📝",
+    link:"https://github.com/Arsath-md/my-blog"
   },
+  {
+    title: "Homecare Website",
+    category: "Webite",
+    description:
+      "High-performance and mordern application for the Home care nursing company called velan homecare",
+    icon: "⚕️",
+    link:"https://homecare-alpha.vercel.app/"
+
+  }
 ];
 
 export default function Portfolio() {
@@ -91,12 +104,13 @@ export default function Portfolio() {
 
                 {/* Footer */}
                 <div className="flex items-center justify-between pt-6 border-t border-white/10">
+                <Link href={project.link}>
                   <button className="flex items-center gap-2 text-white/70 group-hover:text-cyan-300 transition-all">
                     View Project
                     <span className="group-hover:translate-x-1 transition">
                       →
                     </span>
-                  </button>
+                  </button></Link>
 
                   <span className="text-white/20 text-sm">
                     Premium Project

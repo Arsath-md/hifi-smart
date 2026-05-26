@@ -177,6 +177,7 @@ export default function ContactForm() {
               placeholder="9876543210"
               required
               pattern="[0-9]{10}"
+
             />
 
             <Input
@@ -185,6 +186,7 @@ export default function ContactForm() {
               name="whatsapp"
               placeholder="9876543210"
               pattern="[0-9]{10}"
+              required
             />
 
             <Input

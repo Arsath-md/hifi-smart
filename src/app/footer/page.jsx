@@ -50,7 +50,7 @@ export default function Footer() {
             <ul className="space-y-4 text-white/50">
               <li>
                 <a
-                  href="#home"
+                  href="/"
                   className="hover:text-cyan-300 transition"
                 >
                   Home
@@ -59,7 +59,7 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="#services"
+                  href="/service"
                   className="hover:text-cyan-300 transition"
                 >
                   Services
@@ -68,7 +68,7 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="#portfolio"
+                  href="/portfolio"
                   className="hover:text-cyan-300 transition"
                 >
                   Portfolio
@@ -77,7 +77,7 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="hover:text-cyan-300 transition"
                 >
                   Contact
