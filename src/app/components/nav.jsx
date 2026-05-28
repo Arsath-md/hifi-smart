@@ -14,7 +14,8 @@ export default function Nav() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <div className="w-11 h-11 rounded-2xl bg-cyan-400/20 border border-cyan-400/30 flex items-center justify-center">
-            <span className="text-cyan-300 font-black text-xl">H</span>
+            {/* <span className="text-cyan-300 font-black text-xl">H</span> */}
+            <img src="/image.png" className="rounded" alt="" />
           </div>
 
           <div>

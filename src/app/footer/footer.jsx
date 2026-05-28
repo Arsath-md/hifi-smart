@@ -21,7 +21,8 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-2xl bg-cyan-400 text-black font-black flex items-center justify-center text-lg">
-                H
+                            <img src="/image.png" className="rounded" alt="" />
+
               </div>
 
               <h2 className="text-3xl font-black tracking-tight">
