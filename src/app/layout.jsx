@@ -17,6 +17,7 @@ export const metadata = {
     default: "HIFI Smart | Web & Mobile App Development Agency",
     template: "%s | HIFI Smart",
   },
+  
 
   description:
     "HIFI Smart builds modern web applications, mobile apps, and digital marketing solutions for startups and local businesses.",

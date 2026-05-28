@@ -10,12 +10,19 @@ const projects = [
     link: "https://hifi-smart.vercel.app/",
   },
   {
-    title: "Blog Website",
-    category: "Web App",
+    title: "BMG pellets pet shop website",
+    category: "Ecommerce Website",
     description:
-      "High-performance online creating and uploading platform with secure admin dashboard.",
-    icon: "📝",
-    link: "https://github.com/Arsath-md/my-blog",
+      "User-friendly website offering quality pet food,and essentials for happy healthy pets online.",
+    icon: "🐈🧫",
+    link: "https://bmg-pellets.netlify.app/",
+  },{
+    title: "Joe clothing website",
+    category: "Ecommerce Website",
+    description:
+      "Mordern and responsive with 3D elements of online clothing website ",
+    icon: "👔",
+    link: "https://ecommerce-s74m.onrender.com/",
   },
   {
     title: "Homecare Website",
