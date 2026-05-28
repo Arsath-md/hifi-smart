@@ -206,9 +206,9 @@ export default function Home() {
       </main>
 
       <Service />
+      <Portfolio />
       <Process />
       <Subscription/>
-      <Portfolio />
       <FAQSection/>
       <CTA />
       <Footer />
